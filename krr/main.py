@@ -74,10 +74,22 @@ class RDF:
 
             self.data = response.json()['results']
 
+    def jozko(self, row):
+        if row["id"] is not None:
+            rdf.create_data_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
+
+    def zuzka(self, row):
+        # if row["id"] is not None:
+        #     rdf.create_data_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
+        pass
+
+    def process_row(self, row):
+        self.jozko(row)
+        self.zuzka(row)
+
     def run(self):
         for row in self.data:
-    #         vsetky vlasnosti
-            rdf.create_data_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasTitle, row["original_title"], XSD.string)
+            self.process_row(row)
 
 
     def create_object_property(self, uri, property, uri2):
@@ -101,6 +113,7 @@ class RDF:
 rdf = RDF()
 rdf.download_data()
 rdf.run()
+
 rdf.save_graph()
 
 # rdf.create_data_property(SM + 'Film/' + '1234', SM.hasTitle, 'Titanic', XSD.string)

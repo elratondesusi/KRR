@@ -195,6 +195,7 @@ DataProperty: sm:hasLogo
 DataProperty: sm:hasName
 
     Domain: 
+        <http://www.semanticweb.org/small-imdb/Film>,
         <http://www.semanticweb.org/small-imdb/Person>
     
     Range: 
