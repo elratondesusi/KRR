@@ -1,0 +1,406 @@
+Prefix: dbo: <https://dbpedia.org/ontology/>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: sm: <http://www.semanticweb.org/small-imdb#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+Ontology: <http://www.semanticweb.org/small-imdb>
+
+
+Datatype: xsd:anyURI
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: xsd:float
+
+    
+Datatype: xsd:int
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: <http://dbpedia.org/ontology/ProducedBy>
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        sm:FilmStudio
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    Domain: 
+        dbo:Film
+    
+    
+ObjectProperty: sm:directedBy
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        dbo:Director
+    
+    
+ObjectProperty: sm:hasBirthPlace
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        dbo:Country
+    
+    
+ObjectProperty: sm:hasBirthday
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+ObjectProperty: sm:hasGenre
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        dbo:Genre
+    
+    
+ObjectProperty: sm:hasOriginCountry
+
+    Domain: 
+        sm:FilmStudio,
+        dbo:Film
+    
+    Range: 
+        dbo:Country
+    
+    
+ObjectProperty: sm:starring
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        dbo:Actor
+    
+    
+ObjectProperty: sm:starsIn
+
+    Domain: 
+        dbo:Actor
+    
+    Range: 
+        dbo:Film
+    
+    
+DataProperty: sm:hasAbstract
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasBiography
+
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasBirthDate
+
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: sm:hasBudget
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasDeathDate
+
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: sm:hasHomepage
+
+    Domain: 
+        sm:FilmStudio,
+        dbo:Film,
+        dbo:Person
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sm:hasId
+
+    Domain: 
+        sm:FilmStudio,
+        dbo:Film,
+        dbo:Genre,
+        dbo:Person
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: sm:hasImage
+
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sm:hasLogo
+
+    Domain: 
+        sm:FilmStudio
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasName
+
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasPhoto
+
+    Domain: 
+        dbo:Person
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasPopularity
+
+    Domain: 
+        dbo:Person
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasPoster
+
+    Domain: 
+        dbo:Film
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasRanking
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasRuntime
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: sm:isAdultFilm
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:boolean
+    
+    
+DataProperty: sm:releasedIn
+
+    Domain: 
+        dbo:Film
+    
+    Range: 
+        xsd:dateTime
+    
+    
+Class: dbo:Actor
+
+    SubClassOf: 
+        dbo:Person
+    
+    
+Class: dbo:Country
+
+    
+Class: dbo:Director
+
+    SubClassOf: 
+        dbo:Person
+    
+    
+Class: dbo:Film
+
+    
+Class: dbo:Genre
+
+    
+Class: dbo:Person
+
+    
+Class: sm:Action
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Adventure
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Animation
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Comedy
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Crime
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Documentary
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Drama
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Family
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Fantasy
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:FilmStudio
+
+    
+Class: sm:History
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Horror
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Music
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Mystery
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Romance
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:ScienceFiction
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Thriller
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:TvMovie
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:War
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
+Class: sm:Western
+
+    SubClassOf: 
+        dbo:Genre
+    
+    
