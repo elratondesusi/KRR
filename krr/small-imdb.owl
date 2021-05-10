@@ -14,395 +14,395 @@ Ontology: <http://www.semanticweb.org/small-imdb>
 
 Datatype: xsd:anyURI
 
-    
+
 Datatype: xsd:boolean
 
-    
+
 Datatype: xsd:dateTime
 
-    
+
 Datatype: xsd:float
 
-    
+
 Datatype: xsd:int
 
-    
+
 Datatype: xsd:string
 
-    
+
 ObjectProperty: <http://dbpedia.org/ontology/ProducedBy>
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/FilmStudio>
-    
-    
+    Domain:
+        sm:Film
+
+    Range:
+        sm:FilmStudio
+
+
 ObjectProperty: owl:topObjectProperty
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    
+    Domain:
+        sm:Film
+
+
 ObjectProperty: sm:directedBy
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Director>
-    
-    
+    Domain:
+        sm:Film
+
+    Range:
+        sm:Director
+
+
 ObjectProperty: sm:hasBirthPlace
 
-    SubPropertyOf: 
+    SubPropertyOf:
         owl:topObjectProperty
-    
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Country>
-    
-    
+
+    Domain:
+        sm:Person
+
+    Range:
+        sm:Country
+
+
 ObjectProperty: sm:hasBirthday
 
-    SubPropertyOf: 
+    SubPropertyOf:
         owl:topObjectProperty
-    
-    
+
+
 ObjectProperty: sm:hasGenre
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    Domain:
+        sm:Film
+
+    Range:
+        sm:Genre
+
+
 ObjectProperty: sm:hasOriginCountry
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>,
-        <http://www.semanticweb.org/small-imdb/FilmStudio>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Country>
-    
-    
+    Domain:
+        sm:Film,
+        sm:FilmStudio
+
+    Range:
+        sm:Country
+
+
 ObjectProperty: sm:starring
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Actor>
-    
-    
+    Domain:
+        sm:Film
+
+    Range:
+        sm:Actor
+
+
 ObjectProperty: sm:starsIn
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Actor>
-    
-    Range: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    
+    Domain:
+        sm:Actor
+
+    Range:
+        sm:Film
+
+
 DataProperty: sm:hasAbstract
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:string
-    
-    
+
+
 DataProperty: sm:hasBiography
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Person
+
+    Range:
         xsd:string
-    
-    
+
+
 DataProperty: sm:hasBirthDate
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Person
+
+    Range:
         xsd:dateTime
-    
-    
+
+
 DataProperty: sm:hasBudget
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:float
-    
-    
+
+
 DataProperty: sm:hasDeathDate
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Person
+
+    Range:
         xsd:dateTime
-    
-    
+
+
 DataProperty: sm:hasHomepage
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>,
-        <http://www.semanticweb.org/small-imdb/FilmStudio>,
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Film,
+        sm:FilmStudio,
+        sm:Person
+
+    Range:
         xsd:anyURI
-    
-    
+
+
 DataProperty: sm:hasId
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>,
-        <http://www.semanticweb.org/small-imdb/FilmStudio>,
-        <http://www.semanticweb.org/small-imdb/Genre>,
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Film,
+        sm:FilmStudio,
+        sm:Genre,
+        sm:Person
+
+    Range:
         xsd:int
-    
-    
+
+
 DataProperty: sm:hasImage
 
-    Range: 
+    Range:
         xsd:anyURI
-    
-    
+
+
 DataProperty: sm:hasLogo
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/FilmStudio>
-    
-    SubPropertyOf: 
+    Domain:
+        sm:FilmStudio
+
+    SubPropertyOf:
         sm:hasImage
-    
-    
+
+
 DataProperty: sm:hasName
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>,
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Film,
+        sm:Person
+
+    Range:
         xsd:string
-    
-    
+
+
 DataProperty: sm:hasPhoto
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    SubPropertyOf: 
+    Domain:
+        sm:Person
+
+    SubPropertyOf:
         sm:hasImage
-    
-    
+
+
 DataProperty: sm:hasPopularity
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    Range: 
+    Domain:
+        sm:Person
+
+    Range:
         xsd:float
-    
-    
+
+
 DataProperty: sm:hasPoster
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    SubPropertyOf: 
+    Domain:
+        sm:Film
+
+    SubPropertyOf:
         sm:hasImage
-    
-    
+
+
 DataProperty: sm:hasRanking
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:float
-    
-    
+
+
 DataProperty: sm:hasRuntime
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:int
-    
-    
+
+
 DataProperty: sm:isAdultFilm
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:boolean
-    
-    
+
+
 DataProperty: sm:releasedIn
 
-    Domain: 
-        <http://www.semanticweb.org/small-imdb/Film>
-    
-    Range: 
+    Domain:
+        sm:Film
+
+    Range:
         xsd:dateTime
-    
-    
-Class: <http://www.semanticweb.org/small-imdb/Actor>
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    
-Class: <http://www.semanticweb.org/small-imdb/Country>
 
-    
-Class: <http://www.semanticweb.org/small-imdb/Director>
-
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Person>
-    
-    
-Class: <http://www.semanticweb.org/small-imdb/Film>
-
-    
-Class: <http://www.semanticweb.org/small-imdb/FilmStudio>
-
-    
-Class: <http://www.semanticweb.org/small-imdb/Genre>
-
-    
-Class: <http://www.semanticweb.org/small-imdb/Person>
-
-    
 Class: sm:Action
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
+Class: sm:Actor
+
+    SubClassOf:
+        sm:Person
+
+
 Class: sm:Adventure
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Animation
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Comedy
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
+Class: sm:Country
+
+
 Class: sm:Crime
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
+Class: sm:Director
+
+    SubClassOf:
+        sm:Person
+
+
 Class: sm:Documentary
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Drama
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Family
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Fantasy
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
+Class: sm:Film
+
+
+Class: sm:FilmStudio
+
+
+Class: sm:Genre
+
+
 Class: sm:History
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Horror
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Music
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Mystery
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
+Class: sm:Person
+
+
 Class: sm:Romance
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:ScienceFiction
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Thriller
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:TvMovie
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:War
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
-    
+    SubClassOf:
+        sm:Genre
+
+
 Class: sm:Western
 
-    SubClassOf: 
-        <http://www.semanticweb.org/small-imdb/Genre>
-    
+    SubClassOf:
+        sm:Genre
+
     
