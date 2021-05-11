@@ -64,7 +64,7 @@ class RDF:
         what = 'movie'
         api_key = 'd856d5f9cb33692ee1fff156afd22229'
         sort_by = 'popularity.desc'
-        page = '1'
+        page = '50'
         link = 'https://api.themoviedb.org/3/discover/' + what + '?api_key=' + api_key + '&language=en-US&sort_by=' + sort_by + '&include_adult=false&include_video=false&page=' + page + '&with_watch_monetization_types=flatrate'
 
         response = requests.get(link)
@@ -117,6 +117,10 @@ class RDF:
                         if "origin_country" in film_studio:
                             self.create_object_property(self.SM + 'FilmStudio/' + film_studio["id"], self.SM.hasOriginCountry, self.SM + 'Country/' + film_studio["origin_country"])
                         self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.DBO.ProducedBy, self.SM + 'FilmStudio/' + film_studio["id"])
+            if "genre_ids" in row:
+                for genre in row["genre_ids"]:
+                    self.create_object_property(self.SM + 'Genre/' + str(genre), RDFS.Class, self.SM["Genre"])
+                    self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasGenre, self.SM + 'Genre/' +str(genre))
 
 
 
