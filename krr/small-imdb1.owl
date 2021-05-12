@@ -65,12 +65,7 @@ ObjectProperty: sm:hasBirthPlace
     Range: 
         sm:Country
     
-    
-ObjectProperty: sm:hasGenre
 
-    Domain: 
-        sm:Film
-    
     
 ObjectProperty: sm:hasOriginCountry
 

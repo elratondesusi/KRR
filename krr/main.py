@@ -60,10 +60,10 @@ class RDF:
     def jozko(self, row):
         if row["id"] is not None:
             director = self.get_director(row["id"])
-            self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.directedBy, self.SM + "Director/" + str(director["id"]))
-            self.create_object_property(self.SM + 'Director/' + str(director["id"]), RDFS.Class, self.SM["Director"])
-            self.create_data_property(self.SM + 'Director/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
-            self.create_data_property(self.SM + 'Director/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
+            self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.directedBy, self.SM + "Person/" + str(director["id"]))
+            self.create_object_property(self.SM + 'Person/' + str(director["id"]), RDFS.Class, self.SM["Director"])
+            self.create_data_property(self.SM + 'Person/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
+            self.create_data_property(self.SM + 'Person/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
 
             if "original_title" in row:
                 self.create_data_property(self.SM + 'Film/' +str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
@@ -112,9 +112,9 @@ class RDF:
             if "genres" in row:
                 for genre in row["genres"]:
                     self.create_object_property(self.SM + 'Film/' + str(row["id"]), RDFS.Class, self.SM[genre["name"].replace(" ", "")])
-            
+
     def process_row(self, row):
-        # self.jozko(row)
+        self.jozko(row)
         self.zuzka(row)
 
     def run(self):
