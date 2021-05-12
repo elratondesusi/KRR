@@ -1,0 +1,385 @@
+Prefix: dbo: <https://dbpedia.org/ontology/>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: sm: <http://sm.org/onto/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/small-imdb>
+
+
+Datatype: xsd:anyURI
+
+    
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:dateTime
+
+    
+Datatype: xsd:float
+
+    
+Datatype: xsd:int
+
+    
+Datatype: xsd:string
+
+    
+ObjectProperty: <http://dbpedia.org/ontology/ProducedBy>
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        sm:FilmStudio
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    Domain: 
+        sm:Film
+    
+    
+ObjectProperty: sm:directedBy
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        sm:Director
+    
+    
+ObjectProperty: sm:hasBirthPlace
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    Domain: 
+        sm:Person
+    
+    Range: 
+        sm:Country
+    
+    
+ObjectProperty: sm:hasGenre
+
+    Domain: 
+        sm:Film
+    
+    
+ObjectProperty: sm:hasOriginCountry
+
+    Domain: 
+        sm:Film,
+        sm:FilmStudio
+    
+    Range: 
+        sm:Country
+    
+    
+ObjectProperty: sm:starring
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        sm:Actor
+    
+    
+ObjectProperty: sm:starsIn
+
+    Domain: 
+        sm:Actor
+    
+    Range: 
+        sm:Film
+    
+    
+DataProperty: sm:hasAbstract
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasBiography
+
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasBirthDate
+
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: sm:hasBudget
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasDeathDate
+
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:dateTime
+    
+    
+DataProperty: sm:hasHomepage
+
+    Domain: 
+        sm:Film,
+        sm:FilmStudio,
+        sm:Person
+    
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sm:hasImage
+
+    Range: 
+        xsd:anyURI
+    
+    
+DataProperty: sm:hasLogo
+
+    Domain: 
+        sm:FilmStudio
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasName
+
+    Domain: 
+        sm:Film,
+        sm:FilmStudio,
+        sm:Person
+    
+    Range: 
+        xsd:string
+    
+    
+DataProperty: sm:hasPhoto
+
+    Domain: 
+        sm:Person
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasPopularity
+
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasPoster
+
+    Domain: 
+        sm:Film
+    
+    SubPropertyOf: 
+        sm:hasImage
+    
+    
+DataProperty: sm:hasRanking
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:float
+    
+    
+DataProperty: sm:hasRuntime
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:int
+    
+    
+DataProperty: sm:isAdultFilm
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:boolean
+    
+    
+DataProperty: sm:releasedIn
+
+    Domain: 
+        sm:Film
+    
+    Range: 
+        xsd:dateTime
+    
+    
+Class: sm:Action
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Actor
+
+    SubClassOf: 
+        sm:Person
+    
+    
+Class: sm:Adventure
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Animation
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Comedy
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Country
+
+    
+Class: sm:Crime
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Director
+
+    SubClassOf: 
+        sm:Person
+    
+    
+Class: sm:Documentary
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Drama
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Family
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Fantasy
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Film
+
+    
+Class: sm:FilmStudio
+
+    
+Class: sm:History
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Horror
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Music
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Mystery
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Person
+
+    
+Class: sm:Romance
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:ScienceFiction
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Thriller
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:TvMovie
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:War
+
+    SubClassOf: 
+        sm:Film
+    
+    
+Class: sm:Western
+
+    SubClassOf: 
+        sm:Film
+    
+    

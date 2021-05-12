@@ -1,53 +1,9 @@
-        #pip3 install requests
+# pip3 install requests
 # https://github.com/RDFLib/rdflib
 import requests
 import json
 import rdflib
-from rdflib.namespace import XSD, OWL, RDFS
-#
-# g = rdflib.Graph()
-# SM = rdflib.Namespace('http://sm.org/onto/')
-# DBO = rdflib.Namespace('https://dbpedia.org/ontology/')
-#
-# g.bind("foaf", FOAF)
-# g.bind("xsd", XSD)
-# g.bind("sm", SM)
-# # discover = '/discover/movie?sort_by=popularity.desc'
-# # link = "https://api.themoviedb.org/3/search/movie?api_key=d856d5f9cb33692ee1fff156afd22229&query=Titanic"
-# # link = 'https://api.themoviedb.org/3/discover/movie?api_key=d856d5f9cb33692ee1fff156afd22229&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
-#
-#
-# what = 'movie'
-# api_key = 'd856d5f9cb33692ee1fff156afd22229'
-# sort_by = 'popularity.desc'
-# page = '1'
-# link = 'https://api.themoviedb.org/3/discover/' + what + '?api_key=' + api_key + '&language=en-US&sort_by=' + sort_by + '&include_adult=false&include_video=false&page=' + page + '&with_watch_monetization_types=flatrate'
-#
-# response = requests.get(link)
-#
-# if response.status_code == 200:
-#     with open('data_' + what + '_' + sort_by + '.json', 'w') as f:
-#         json.dump(response.json(), f)
-#
-#     result = response.json()
-#     print('size:', len(result['results']))
-#     for i in result['results']:
-#         print(i['original_title'])
-#         g.add((
-#             rdflib.URIRef("http://example.com/movie/" + str(i['id'])),
-#             SM.hasTitle,
-#             rdflib.Literal(i['original_title'], datatype=XSD.string)
-#         ))
-#         g.add((
-#             rdflib.URIRef("http://example.com/movie/" + str(i['id'])),
-#             SM.hasAbstract,
-#             rdflib.Literal(i['overview'], datatype=XSD.string)
-#         ))
-#
-#     # for i in g.serialize(format="turtle"):
-#     #     print(i)
-#
-# g.serialize(format="turtle", destination='output.rdf')
+from rdflib.namespace import XSD, RDFS
 
 
 class RDF:
@@ -110,7 +66,7 @@ class RDF:
             self.create_data_property(self.SM + 'Director/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
 
             if "original_title" in row:
-                self.create_data_property(self.SM + str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
+                self.create_data_property(self.SM + 'Film/' +str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
 
 
     def zuzka(self, row):
