@@ -109,13 +109,12 @@ class RDF:
                         if "origin_country" in film_studio:
                             self.create_object_property(self.SM + 'FilmStudio/' + film_studio_id, self.SM.hasOriginCountry, self.SM + 'Country/' + film_studio["origin_country"])
                         self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.DBO.ProducedBy, self.SM + 'FilmStudio/' + film_studio_id)
-            if "genre_ids" in row:
-                for genre in row["genre_ids"]:
-                    self.create_object_property(self.SM + 'Genre/' + str(genre), RDFS.Class, self.SM["Genre"])
-                    self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasGenre, self.SM + 'Genre/' +str(genre))
-
+            if "genres" in row:
+                for genre in row["genres"]:
+                    self.create_object_property(self.SM + 'Film/' + str(row["id"]), RDFS.Class, self.SM[genre["name"].replace(" ", "")])
+            
     def process_row(self, row):
-        self.jozko(row)
+        # self.jozko(row)
         self.zuzka(row)
 
     def run(self):
