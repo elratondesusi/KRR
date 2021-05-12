@@ -81,7 +81,7 @@ class RDF:
         for person in film_credits["crew"]:
             if "job" in person:
                 if person["job"] == "Director":
-                    return person["name"]
+                    return person
         return None
 
     def send_requests(self, link):
@@ -103,8 +103,12 @@ class RDF:
 
     def jozko(self, row):
         if row["id"] is not None:
-            self.create_object_property(self.SM + 'Director/' + str(row["id"]), RDFS.Class, self.SM["Credits"])
-            self.get_director(row["id"])
+            director = self.get_director(row["id"])
+            self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.directedBy, self.SM + "Director/" + str(director["id"]))
+            self.create_object_property(self.SM + 'Director/' + str(director["id"]), RDFS.Class, self.SM["Director"])
+            self.create_data_property(self.SM + 'Director/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
+            self.create_data_property(self.SM + 'Director/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
+
             if "original_title" in row:
                 self.create_data_property(self.SM + str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
 
