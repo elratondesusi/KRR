@@ -90,11 +90,11 @@ class RDF:
                 self.create_data_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasAbstract, row["overview"], XSD.string)
             if "production_countries" in row:
                 for country in row["production_countries"]:
-                    if "id" in country:
-                        self.create_object_property(self.SM + 'Country/' + country["id"], RDFS.Class, self.SM["Country"])
+                    if "iso_3166_1" in country:
+                        self.create_object_property(self.SM + 'Country/' + country["iso_3166_1"], RDFS.Class, self.SM["Country"])
                         if "name" in country:
-                            self.create_data_property(self.SM + 'Country/' + country["id"], self.SM.hasName, country["name"], XSD.string)
-                        self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasOriginCountry, self.SM + 'Country/' + country["id"])
+                            self.create_data_property(self.SM + 'Country/' + country["iso_3166_1"], self.SM.hasName, country["name"], XSD.string)
+                        self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.hasOriginCountry, self.SM + 'Country/' + country["iso_3166_1"])
             if "production_countries" in row:
                 for film_studio in row["production_companies"]:
                     if "id" in film_studio:
@@ -112,6 +112,66 @@ class RDF:
             if "genres" in row:
                 for genre in row["genres"]:
                     self.create_object_property(self.SM + 'Film/' + str(row["id"]), RDFS.Class, self.SM[genre["name"].replace(" ", "")])
+
+            self.create_actor_node(row["id"])
+
+
+    #Iveta a Nikolaj !!!!!
+
+    def get_actors(self, movie_id):
+        film_credits = self.get_credits(movie_id)
+        if(film_credits is None):
+            return None
+        return film_credits["cast"]
+
+    def get_actor_details(self, actor_id):
+        # https://api.themoviedb.org/3/credit/{credit_id}?api_key=<<api_key>>
+        link = 'https://api.themoviedb.org/3/person/' + str(actor_id) + '?api_key=' + self.API_KEY + '&language=en-US'
+        response = self.send_requests(link)
+        return response.json() if response is not None else None
+
+    def get_actor_photo(self, actor_id):
+        # https://api.themoviedb.org/3/credit/{credit_id}?api_key=<<api_key>>
+        link = 'https://api.themoviedb.org/3/person/' + str(actor_id) + '/images?api_key=' + self.API_KEY + '&language=en-US'
+        response = self.send_requests(link)
+        return response.json() if response is not None else None
+
+    def get_photo_file_path(self, actor_id):
+        image = self.get_actor_photo(actor_id)
+        if(image is None):
+            return None
+        for photo in image["profiles"]:
+            return photo
+        return None
+
+    def create_actor_node(self, movie_id):
+        actors = self.get_actors(movie_id)
+        for actor in actors:
+            if "id" in actor:
+
+                details = self.get_actor_details(actor["id"])
+                self.create_object_property(self.SM + 'Person/' + str(actor["id"]), RDFS.Class, self.SM["Actor"])
+                self.create_object_property(self.SM + 'Film/' + str(movie_id), self.SM.starring, self.SM + 'Person/' + str(actor["id"]))
+                self.create_object_property(self.SM + 'Person/' + str(actor["id"]), self.SM.starsIn, self.SM + 'Film/' + str(movie_id))
+
+                if "birthday" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBirthDate, details["birthday"], XSD.dateTime)
+                if "deathday" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasDeathDate, details["deathday"], XSD.dateTime)
+                if "name" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasName, details["name"], XSD.string)
+                if "biography" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBiography, details["biography"], XSD.string)
+                if "popularity" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasPopularity, details["popularity"], XSD.float)
+
+                #if "place_of_birth" in details:
+                #    print(details["place_of_birth"])
+                #    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBirthPlace, details["place_of_birth"], XSD.string)
+
+                photo = self.get_photo_file_path(actor["id"])
+                if photo is not None and "file_path" in photo:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasPhoto, details["popularity"], XSD.anyURI)
 
     def process_row(self, row):
         self.jozko(row)
