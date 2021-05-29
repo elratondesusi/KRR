@@ -99,7 +99,7 @@ class RDF:
                 for film_studio in row["production_companies"]:
                     if "id" in film_studio:
                         film_studio_id = str(film_studio["id"])
-                        self.create_object_property(self.SM + 'FilmStudio/' + film_studio_id, RDFS.Class, self.SM["Country"])
+                        self.create_object_property(self.SM + 'FilmStudio/' + film_studio_id, RDFS.Class, self.SM["FilmStudio"])
                         if "name" in film_studio:
                             self.create_data_property(self.SM + 'FilmStudio/' + film_studio_id, self.SM.hasName, film_studio["name"], XSD.string)
                         if "logo_path" in film_studio:
@@ -160,18 +160,15 @@ class RDF:
                     self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasDeathDate, details["deathday"], XSD.dateTime)
                 if "name" in details:
                     self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasName, details["name"], XSD.string)
-                if "biography" in details:
                     self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBiography, details["biography"], XSD.string)
                 if "popularity" in details:
                     self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasPopularity, details["popularity"], XSD.float)
-
-                #if "place_of_birth" in details:
-                #    print(details["place_of_birth"])
-                #    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBirthPlace, details["place_of_birth"], XSD.string)
+                if "place_of_birth" in details:
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasBirthPlace, details["place_of_birth"], XSD.string)
 
                 photo = self.get_photo_file_path(actor["id"])
                 if photo is not None and "file_path" in photo:
-                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasPhoto, details["popularity"], XSD.anyURI)
+                    self.create_data_property(self.SM + 'Person/' + str(actor["id"]), self.SM.hasPhoto, photo["file_path"], XSD.anyURI)
 
     def process_row(self, row):
         self.jozko(row)

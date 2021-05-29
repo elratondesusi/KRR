@@ -54,19 +54,6 @@ ObjectProperty: sm:directedBy
         sm:Director
     
     
-ObjectProperty: sm:hasBirthPlace
-
-    SubPropertyOf: 
-        owl:topObjectProperty
-    
-    Domain: 
-        sm:Person
-    
-    Range: 
-        sm:Country
-    
-
-    
 ObjectProperty: sm:hasOriginCountry
 
     Domain: 
@@ -120,6 +107,15 @@ DataProperty: sm:hasBirthDate
     
     Range: 
         xsd:dateTime
+    
+    
+DataProperty: sm:hasBirthPlace
+
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:string
     
     
 DataProperty: sm:hasBudget

@@ -14,395 +14,389 @@ Ontology: <http://www.semanticweb.org/small-imdb>
 
 Datatype: xsd:anyURI
 
-
+    
 Datatype: xsd:boolean
 
-
+    
 Datatype: xsd:dateTime
 
-
+    
 Datatype: xsd:float
 
-
+    
 Datatype: xsd:int
 
-
+    
 Datatype: xsd:string
 
-
+    
 ObjectProperty: <http://dbpedia.org/ontology/ProducedBy>
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         sm:FilmStudio
-
-
+    
+    
 ObjectProperty: owl:topObjectProperty
 
-    Domain:
+    Domain: 
         sm:Film
-
-
+    
+    
 ObjectProperty: sm:directedBy
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         sm:Director
-
-
-ObjectProperty: sm:hasBirthPlace
-
-    SubPropertyOf:
-        owl:topObjectProperty
-
-    Domain:
-        sm:Person
-
-    Range:
-        sm:Country
-
-
-ObjectProperty: sm:hasBirthday
-
-    SubPropertyOf:
-        owl:topObjectProperty
-
-
+    
+    
 ObjectProperty: sm:hasGenre
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         sm:Genre
-
-
+    
+    
 ObjectProperty: sm:hasOriginCountry
 
-    Domain:
+    Domain: 
         sm:Film,
         sm:FilmStudio
-
-    Range:
+    
+    Range: 
         sm:Country
-
-
+    
+    
 ObjectProperty: sm:starring
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         sm:Actor
-
-
+    
+    
 ObjectProperty: sm:starsIn
 
-    Domain:
+    Domain: 
         sm:Actor
-
-    Range:
+    
+    Range: 
         sm:Film
+    
+    
+DataProperty: owl:topDataProperty
 
-
+    
 DataProperty: sm:hasAbstract
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:string
-
-
+    
+    
 DataProperty: sm:hasBiography
 
-    Domain:
+    Domain: 
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:string
-
-
+    
+    
 DataProperty: sm:hasBirthDate
 
-    Domain:
+    Domain: 
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:dateTime
+    
+    
+DataProperty: sm:hasBirthPlace
 
-
+    Domain: 
+        sm:Person
+    
+    Range: 
+        xsd:string
+    
+    
 DataProperty: sm:hasBudget
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:float
-
-
+    
+    
 DataProperty: sm:hasDeathDate
 
-    Domain:
+    Domain: 
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:dateTime
-
-
+    
+    
 DataProperty: sm:hasHomepage
 
-    Domain:
+    Domain: 
         sm:Film,
         sm:FilmStudio,
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:anyURI
-
-
+    
+    
 DataProperty: sm:hasId
 
-    Domain:
+    Domain: 
         sm:Film,
         sm:FilmStudio,
         sm:Genre,
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:int
-
-
+    
+    
 DataProperty: sm:hasImage
 
-    Range:
+    Range: 
         xsd:anyURI
-
-
+    
+    
 DataProperty: sm:hasLogo
 
-    Domain:
+    Domain: 
         sm:FilmStudio
-
-    SubPropertyOf:
+    
+    SubPropertyOf: 
         sm:hasImage
-
-
+    
+    
 DataProperty: sm:hasName
 
-    Domain:
+    Domain: 
         sm:Film,
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:string
-
-
+    
+    
 DataProperty: sm:hasPhoto
 
-    Domain:
+    Domain: 
         sm:Person
-
-    SubPropertyOf:
+    
+    SubPropertyOf: 
         sm:hasImage
-
-
+    
+    
 DataProperty: sm:hasPopularity
 
-    Domain:
+    Domain: 
         sm:Person
-
-    Range:
+    
+    Range: 
         xsd:float
-
-
+    
+    
 DataProperty: sm:hasPoster
 
-    Domain:
+    Domain: 
         sm:Film
-
-    SubPropertyOf:
+    
+    SubPropertyOf: 
         sm:hasImage
-
-
+    
+    
 DataProperty: sm:hasRanking
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:float
-
-
+    
+    
 DataProperty: sm:hasRuntime
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:int
-
-
+    
+    
 DataProperty: sm:isAdultFilm
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:boolean
-
-
+    
+    
 DataProperty: sm:releasedIn
 
-    Domain:
+    Domain: 
         sm:Film
-
-    Range:
+    
+    Range: 
         xsd:dateTime
-
-
+    
+    
 Class: sm:Action
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Actor
 
-    SubClassOf:
+    SubClassOf: 
         sm:Person
-
-
+    
+    
 Class: sm:Adventure
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Animation
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Comedy
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Country
 
-
+    
 Class: sm:Crime
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Director
 
-    SubClassOf:
+    SubClassOf: 
         sm:Person
-
-
+    
+    
 Class: sm:Documentary
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Drama
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Family
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Fantasy
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Film
 
-
+    
 Class: sm:FilmStudio
 
-
+    
 Class: sm:Genre
 
-
+    
 Class: sm:History
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Horror
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Music
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Mystery
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Person
 
-
+    
 Class: sm:Romance
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:ScienceFiction
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Thriller
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:TvMovie
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:War
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
-
+    
+    
 Class: sm:Western
 
-    SubClassOf:
+    SubClassOf: 
         sm:Genre
-
+    
     
