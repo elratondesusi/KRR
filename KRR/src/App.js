@@ -49,6 +49,30 @@ function App() {
     FILTER (?genre != sm:Film)
   }`;
 
+  const filmsByActor = `SELECT ?filmName ?poster ?budget ?homepage ?ranking ?runtime ?adult ?releasedId ?abstract ?directedBy
+    ?photo ?actorName ?birthDate ?deathDate ?popularity
+  WHERE {
+          <http://sm.org/onto/Person/1504807> rdfs:Class sm:Actor;
+                                              sm:starsIn ?Film. 
+          OPTIONAL {<http://sm.org/onto/Person/1116982> sm:hasPhoto ?photo.           }
+          OPTIONAL {<http://sm.org/onto/Person/1116982> sm:hasName ?actorName.        }
+          OPTIONAL {<http://sm.org/onto/Person/1116982> sm:hasBirthDate ?birthDate.   }
+          OPTIONAL {<http://sm.org/onto/Person/1116982> sm:hasDeathDate ?deathDate.   }  
+          OPTIONAL {<http://sm.org/onto/Person/1116982> sm:hasPopularity ?popularity. }             
+          
+          OPTIONAL {   ?Film sm:hasName ?filmName.     }
+          OPTIONAL {   ?Film sm:hasPoster ?poster.     }
+          OPTIONAL {   ?Film sm:hasBudget ?budget.     }
+          OPTIONAL {   ?Film sm:hasHomepage ?homepage. }
+          OPTIONAL {   ?Film sm:hasRanking ?ranking.   }
+          OPTIONAL {   ?Film sm:hasRuntime ?runtime.   }
+          OPTIONAL {   ?Film sm:isAdultFilm ?adult.    }
+          OPTIONAL {   ?Film sm:releasedIn ?releasedId.}
+          OPTIONAL {   ?Film sm:hasAbstract ?abstract. }
+          OPTIONAL {   ?Film sm:directedBy ?directedBy.}
+          OPTIONAL {   ?Film sm:starring ?starring.    }
+  }
+  GROUP BY ?filmName ?poster ?budget ?homepage ?ranking ?runtime ?adult ?releasedId ?abstract ?directedBy ?photo ?actorName ?birthDate ?deathDate ?popularity`;
 
   (async () => {
     try{
