@@ -49,21 +49,25 @@ class RDF:
     def download_data(self):
         what = 'movie'
         sort_by = 'popularity.desc'
-        page = '50'
-        link = 'https://api.themoviedb.org/3/discover/' + what + '?api_key=' + self.API_KEY + '&language=en-US&sort_by=' + sort_by + '&include_adult=false&include_video=false&page=' + page + '&with_watch_monetization_types=flatrate'
-        response = self.send_requests(link)
-        if response is not None:
-            with open('data_' + what + '_' + page + '.json', 'w') as f:
-                json.dump(response.json(), f)
-            self.data = response.json()['results']
+        self.data = []
+        for i in range(50):
+            page = str(i)
+            link = 'https://api.themoviedb.org/3/discover/' + what + '?api_key=' + self.API_KEY + '&language=en-US&sort_by=' + sort_by + '&include_adult=false&include_video=false&page=' + page + '&with_watch_monetization_types=flatrate'
+            response = self.send_requests(link)
+            if response is not None:
+                with open('data_' + what + '_' + page + '.json', 'w') as f:
+                    json.dump(response.json(), f)
+                self.data += response.json()['results']
+
 
     def jozko(self, row):
         if row["id"] is not None:
             director = self.get_director(row["id"])
-            self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.directedBy, self.SM + "Person/" + str(director["id"]))
-            self.create_object_property(self.SM + 'Person/' + str(director["id"]), RDFS.Class, self.SM["Director"])
-            self.create_data_property(self.SM + 'Person/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
-            self.create_data_property(self.SM + 'Person/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
+            if director is not None:
+                self.create_object_property(self.SM + 'Film/' + str(row["id"]), self.SM.directedBy, self.SM + "Person/" + str(director["id"]))
+                self.create_object_property(self.SM + 'Person/' + str(director["id"]), RDFS.Class, self.SM["Director"])
+                if director["name"] is not None:
+                    self.create_data_property(self.SM + 'Person/' + str(director["id"]), self.SM.hasName, director["name"], XSD.string)
 
             if "original_title" in row:
                 self.create_data_property(self.SM + 'Film/' +str(row["id"]), self.SM.hasName, row["original_title"], XSD.string)
@@ -172,7 +176,6 @@ class RDF:
 
     def process_row(self, row):
         self.jozko(row)
-        self.zuzka(row)
 
     def run(self):
         for row in self.data:
@@ -194,7 +197,7 @@ class RDF:
         ))
 
     def save_graph(self):
-        self.g.serialize(format="turtle", destination='output.rdf')
+        self.g.serialize(format="turtle", destination='output.ttl')
 
 
 rdf = RDF()
@@ -202,6 +205,3 @@ rdf.download_data()
 rdf.run()
 
 rdf.save_graph()
-
-# rdf.create_data_property(SM + 'Film/' + '1234', SM.hasTitle, 'Titanic', XSD.string)
-# rdf.create_object_property(SM + 'Film/' + '1234', SM.producedBy, SM + 'FilmStudio/' + 'studio16')
