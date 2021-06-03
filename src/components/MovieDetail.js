@@ -26,14 +26,13 @@ const MovieDetail = ({getMovieID, showList, showActor}) =>{
       OPTIONAL {<${getMovieID()}>                   sm:isAdultFilm ?adult.}
       OPTIONAL {<${getMovieID()}>                   sm:releasedIn ?releasedIn.}
       OPTIONAL {<${getMovieID()}>                   sm:hasAbstract ?abstract.}
-      OPTIONAL {<${getMovieID()}>                   sm:directedBy ?directedBy.}
-      OPTIONAL {<${getMovieID()}>                   sm:hasOriginCountry ?country.}
-      OPTIONAL {<${getMovieID()}>                   sm:starring ?starring.}
-
-        OPTIONAL {      ?starring sm:hasName ?actorName.}
-        OPTIONAL {      ?country sm:hasName ?countryName.}
-        OPTIONAL {      ?directedBy sm:hasName ?directorName.}
-        BIND (CONCAT(STR(?starring), " - ", ?actorName) AS ?actorInfo)
+      OPTIONAL {<${getMovieID()}>                   sm:directedBy ?directedBy.
+      OPTIONAL {      ?directedBy sm:hasName ?directorName.}}
+      OPTIONAL {<${getMovieID()}>                   sm:hasOriginCountry ?country.
+      OPTIONAL {      ?country sm:hasName ?countryName.}}
+      OPTIONAL {<${getMovieID()}>                   sm:starring ?starring.
+      OPTIONAL {      ?starring sm:hasName ?actorName.
+        BIND (CONCAT(STR(?starring), " - ", ?actorName) AS ?actorInfo)}}   
     }
     GROUP BY ?name ?poster ?budget ?homepage ?ranking ?runtime ?adult ?releasedIn ?abstract ?countryName ?directorName`;
     
@@ -129,7 +128,7 @@ const MovieDetail = ({getMovieID, showList, showActor}) =>{
     if(movie.detail.length === 0){
         return (null)
     }else{
-        var actorArr = movie.detail[0].actors.value.split(",")
+        var actorArr = []
         var budget = ""
         var homepage = ""
         var ranking = ""
@@ -142,6 +141,9 @@ const MovieDetail = ({getMovieID, showList, showActor}) =>{
         var directorName = ""
         var poster = ""
 
+        if(movie.detail[0].actors){
+            actorArr = movie.detail[0].actors.value.split(",")
+        }
         if(movie.detail[0].budget){
             budget = movie.detail[0].budget.value
         }if(movie.detail[0].homepage){
